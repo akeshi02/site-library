@@ -1,5 +1,105 @@
 {
-  "generated_at": null,
-  "owner": null,
-  "books": []
+  "generated_at": "2026-08-30T06:41:55.680906+00:00",
+  "owner": "akeshi02",
+  "books": [
+    {
+      "repo": "folio-ebook-reader",
+      "description": "",
+      "url": "https://akeshi02.github.io/folio-ebook-reader/",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "updated_at": "2026-08-30T04:15:42Z"
+    },
+    {
+      "repo": "webnovel-tracker",
+      "description": "",
+      "url": "https://akeshi02.github.io/webnovel-tracker/",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "updated_at": "2026-08-30T04:15:03Z"
+    },
+    {
+      "repo": "comic-reader",
+      "description": "",
+      "url": "https://akeshi02.github.io/comic-reader/",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "updated_at": "2026-08-29T06:28:35Z"
+    },
+    {
+      "repo": "novel-translator",
+      "description": "",
+      "url": "https://akeshi02.github.io/novel-translator/",
+      "language": "HTML",
+      "topics": [],
+      "stars": 0,
+      "updated_at": "2026-07-08T19:16:15Z"
+    },
+    {
+      "repo": "car-soccer-game",
+      "description": "Browser-based 3D car-soccer game inspired by Rocket League",
+      "url": "https://akeshi02.github.io/car-soccer-game/",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "updated_at": "2026-07-03T17:53:21Z"
+    },
+    {
+      "repo": "webnovel-vault",
+      "description": "",
+      "url": "https://akeshi02.github.io/webnovel-vault/",
+      "language": "HTML",
+      "topics": [],
+      "stars": 0,
+      "updated_at": "2026-04-11T12:39:07Z"
+    },
+    {
+      "repo": "pomodoro",
+      "description": "",
+      "url": "https://akeshi02.github.io/pomodoro/",
+      "language": "HTML",
+      "topics": [],
+      "stars": 1,
+      "updated_at": "2026-04-10T18:56:47Z"
+    },
+    {
+      "repo": "URDF-Forge",
+      "description": "A lightweight, browser-based visual editor for designing 3D robot models and exporting them directly to URDF for use in Ignition Gazebo (Fortress). This tool simplifies the robot description process by providing a real-time, interactive environment for building complex kinematic chains and sensor configurations.",
+      "url": "https://akeshi02.github.io/URDF-Forge/",
+      "language": "HTML",
+      "topics": [],
+      "stars": 2,
+      "updated_at": "2026-04-03T16:57:05Z"
+    },
+    {
+      "repo": "gbcweb",
+      "description": "",
+      "url": "https://akeshi02.github.io/gbcweb/",
+      "language": "HTML",
+      "topics": [],
+      "stars": 0,
+      "updated_at": "2026-03-22T13:30:37Z"
+    },
+    {
+      "repo": "game-hub",
+      "description": "",
+      "url": "https://akeshi02.github.io/game-hub/",
+      "language": "CSS",
+      "topics": [],
+      "stars": 0,
+      "updated_at": "2026-03-18T16:58:39Z"
+    },
+    {
+      "repo": "website1",
+      "description": "",
+      "url": "https://akeshi02.github.io/website1/",
+      "language": "HTML",
+      "topics": [],
+      "stars": 1,
+      "updated_at": "2026-03-17T09:24:09Z"
+    }
+  ]
 }
