@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --room:#1B140F;
+    --room-2:#231A13;
+    --parchment:#F1E6D3;
+    --parchment-dim:#C9BBA3;
+    --brass:#C9A268;
+    --brass-dim:#8C7550;
+    --shelf-wood:#3B2A1E;
+    --shelf-wood-light:#4E3A28;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(900px 500px at 20% -5%, rgba(201,162,104,0.10), transparent 60%),
+      radial-gradient(700px 400px at 85% 10%, rgba(201,162,104,0.06), transparent 55%),
+      var(--room);
+    color:var(--parchment);
+    font-family:'IBM Plex Mono', monospace;
+    min-height:100vh;
+    padding:44px 6vw 90px;
+  }
+  .wrap{max-width:1240px; margin:0 auto;}
+
+  /* ---------- header ---------- */
+  header{
+    margin-bottom:48px;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(201,162,104,0.22);
+  }
+  header h1{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:600; font-size:clamp(32px, 4.4vw, 52px);
+    letter-spacing:-0.01em; margin:0 0 10px; color:var(--parchment);
+  }
+  header h1 em{ color:var(--brass); font-style:italic; font-weight:500; }
+  header p{margin:0; color:var(--parchment-dim); font-size:13px; letter-spacing:.02em;}
+  header p span{color:var(--brass);}
+
+  /* ---------- shelves ---------- */
+  .shelf{margin-bottom:56px;}
+  .spines{
+    display:flex; align-items:flex-end; flex-wrap:wrap;
+    gap:10px; padding:0 6px 22px;
+    position:relative;
+  }
+  .shelf-board{
+    height:16px; margin:0 -6px;
+    background:linear-gradient(180deg, var(--shelf-wood-light) 0%, var(--shelf-wood) 55%, #1F150E 100%);
+    border-radius:0 0 3px 3px;
+    box-shadow:
+      0 10px 16px -6px rgba(0,0,0,0.65),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  /* ---------- book spine ---------- */
+  .spine-btn{
+    all:unset; cursor:pointer; position:relative; display:block;
+    border-radius:3px 7px 7px 3px;
+    box-shadow:
+      inset -4px 0 7px rgba(0,0,0,0.28),
+      inset 2px 0 0 rgba(255,255,255,0.05),
+      3px 5px 12px -2px rgba(0,0,0,0.55);
+    transition:transform .22s cubic-bezier(.2,.8,.3,1), box-shadow .22s ease;
+  }
+  .spine-btn:hover, .spine-btn:focus-visible{
+    transform:translateY(-16px) rotate(-1.2deg);
+    box-shadow:
+      inset -4px 0 7px rgba(0,0,0,0.28),
+      inset 2px 0 0 rgba(255,255,255,0.06),
+      6px 18px 26px -6px rgba(0,0,0,0.6);
+    outline:none;
+  }
+  .spine-inner{
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    height:100%; padding:16px 0 12px; position:relative;
+    border-top:2px solid rgba(255,255,255,0.14);
+  }
+  .spine-title{
+    writing-mode:vertical-rl; transform:rotate(180deg);
+    font-family:'Fraunces', serif; font-weight:600; font-size:13.5px;
+    color:rgba(241,230,211,0.95); letter-spacing:.01em;
+    max-height:calc(100% - 34px); overflow:hidden;
+    text-overflow:ellipsis; white-space:nowrap;
+  }
+  .spine-mark{
+    margin-top:auto; width:8px; height:8px; border-radius:50%;
+    background:var(--brass); opacity:.55;
+  }
+
+  /* ---------- cover tooltip ---------- */
+  .cover{
+    position:absolute; bottom:calc(100% + 14px); left:50%;
+    transform:translate(-50%, 6px);
+    width:230px; background:var(--room-2); color:var(--parchment);
+    border:1px solid rgba(201,162,104,0.3); border-radius:10px;
+    padding:14px 16px 15px; text-align:left;
+    box-shadow:0 20px 40px -10px rgba(0,0,0,0.7);
+    opacity:0; pointer-events:none; visibility:hidden;
+    transition:opacity .18s ease, transform .18s ease;
+    z-index:5;
+  }
+  .spine-btn:hover .cover, .spine-btn:focus-visible .cover{
+    opacity:1; transform:translate(-50%, 0); visibility:visible;
+  }
+  .cover-title{
+    font-family:'Fraunces', serif; font-weight:600; font-size:16px;
+    margin:0 0 6px; color:var(--parchment);
+  }
+  .cover-desc{
+    font-size:11.5px; line-height:1.5; color:var(--parchment-dim);
+    margin:0 0 10px;
+    display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .cover-meta{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:10px; color:var(--brass-dim); border-top:1px solid rgba(201,162,104,0.18);
+    padding-top:9px;
+  }
+  .cover-meta .lang{color:var(--brass);}
+  .cover-visit{
+    display:inline-block; margin-top:10px; font-size:11px; color:var(--brass);
+    text-decoration:none; letter-spacing:.02em;
+  }
+  .cover-visit:hover{text-decoration:underline;}
+
+  /* ---------- empty / error state ---------- */
+  .empty{
+    border:1px dashed rgba(201,162,104,0.3); border-radius:12px;
+    padding:60px 24px; text-align:center; color:var(--parchment-dim);
+  }
+  .empty .big{
+    font-family:'Fraunces', serif; color:var(--parchment); font-size:20px;
+    margin-bottom:10px; font-weight:600;
+  }
+  .empty code{
+    background:var(--room-2); padding:2px 7px; border-radius:4px;
+    border:1px solid rgba(201,162,104,0.25); color:var(--brass);
+  }
+
+  footer{
+    max-width:1240px; margin:24px auto 0; text-align:center;
+    font-size:11px; color:var(--brass-dim);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1><span id="owner-name">Your</span> <em>Library</em></h1>
+    <p>Every site with GitHub Pages enabled, shelved automatically · <span id="last-built">—</span></p>
+  </header>
+
+  <div id="content">
+    <div class="empty">
+      <div class="big">Loading the shelves…</div>
+      <p>If nothing appears, the build workflow hasn't run yet.</p>
+    </div>
+  </div>
+
+  <footer>Rebuilt daily by a GitHub Actions workflow · hover or tap a spine to read its cover</footer>
+</div>
+
+<script>
+const SPINE_COLORS = ['#7B2D26', '#2F4B3C', '#1F3550', '#B98B2D', '#5B3358', '#1F5C56', '#8C4A2F', '#33334D'];
+const HEIGHTS = [200, 224, 248];
+const WIDTHS = [48, 56, 64];
+const SHELF_SIZE = 7;
+
+function hash(str){
+  let h = 0;
+  for (let i = 0; i < str.length; i++){
+    h = (h << 5) - h + str.charCodeAt(i);
+    h |= 0;
+  }
+  return Math.abs(h);
+}
+
+function pick(arr, seed){ return arr[seed % arr.length]; }
+
+function timeAgo(iso){
+  if(!iso) return '—';
+  const diffMs = Date.now() - new Date(iso).getTime();
+  const days = Math.round(diffMs / 86400000);
+  if (days < 1) return 'today';
+  if (days === 1) return 'yesterday';
+  if (days < 30) return days + 'd ago';
+  const months = Math.round(days / 30);
+  if (months < 12) return months + 'mo ago';
+  return Math.round(months / 12) + 'y ago';
+}
+
+function renderSpine(book){
+  const seed = hash(book.repo);
+  const color = pick(SPINE_COLORS, seed);
+  const height = pick(HEIGHTS, Math.floor(seed / 3));
+  const width = pick(WIDTHS, Math.floor(seed / 7));
+  const desc = book.description && book.description.trim()
+    ? book.description
+    : 'No description yet — pull it off the shelf to find out what\'s inside.';
+
+  return `
+  <button class="spine-btn" style="width:${width}px; height:${height}px; background:${color};"
+          onclick="window.open('${book.url}', '_blank', 'noopener')"
+          aria-label="Open ${book.repo}">
+    <div class="spine-inner">
+      <span class="spine-title">${book.repo}</span>
+      <span class="spine-mark"></span>
+    </div>
+    <div class="cover">
+      <p class="cover-title">${book.repo}</p>
+      <p class="cover-desc">${desc}</p>
+      <div class="cover-meta">
+        <span class="lang">${book.language || 'Markup'}</span>
+        <span>updated ${timeAgo(book.updated_at)}</span>
+      </div>
+      <span class="cover-visit">Open the book ↗</span>
+    </div>
+  </button>`;
+}
+
+function renderEmpty(msg, hint){
+  return `<div class="empty"><div class="big">${msg}</div><p>${hint}</p></div>`;
+}
+
+async function load(){
+  const content = document.getElementById('content');
+  try{
+    const res = await fetch('library.json', {cache: 'no-store'});
+    if(!res.ok) throw new Error('library.json not found (HTTP ' + res.status + ')');
+    const data = await res.json();
+    const books = data.books || [];
+
+    document.getElementById('owner-name').textContent = data.owner ? data.owner + "'s" : 'Your';
+    document.getElementById('last-built').textContent = data.generated_at
+      ? 'last shelved ' + timeAgo(data.generated_at)
+      : 'not built yet';
+
+    if (books.length === 0){
+      content.innerHTML = renderEmpty(
+        'These shelves are empty',
+        'Once a repo has GitHub Pages enabled, the daily build will place it here.'
+      );
+      return;
+    }
+
+    let html = '';
+    for (let i = 0; i < books.length; i += SHELF_SIZE){
+      const shelfBooks = books.slice(i, i + SHELF_SIZE);
+      html += `<div class="shelf">
+        <div class="spines">${shelfBooks.map(renderSpine).join('')}</div>
+        <div class="shelf-board"></div>
+      </div>`;
+    }
+    content.innerHTML = html;
+  }catch(err){
+    content.innerHTML = renderEmpty(
+      "Couldn't open library.json",
+      'Run the "Build Site Library" workflow once (Actions tab → Run workflow) to generate it.'
+    );
+    console.error(err);
+  }
+}
+
+load();
+</script>
+</body>
+</html>
