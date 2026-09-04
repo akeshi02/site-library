@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T10:41:44.700614+00:00",
+  "generated_at": "2026-09-04T10:37:32.958967+00:00",
   "owner": "akeshi02",
   "books": [
     {
@@ -9,7 +9,7 @@
       "language": "JavaScript",
       "topics": [],
       "stars": 0,
-      "updated_at": "2026-09-03T03:37:48Z"
+      "updated_at": "2026-09-04T03:10:15Z"
     },
     {
       "repo": "site-library",
@@ -18,7 +18,7 @@
       "language": "HTML",
       "topics": [],
       "stars": 0,
-      "updated_at": "2026-09-02T10:40:01Z"
+      "updated_at": "2026-09-03T10:41:45Z"
     },
     {
       "repo": "folio-ebook-reader",
