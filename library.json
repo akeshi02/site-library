@@ -1,7 +1,16 @@
 {
-  "generated_at": "2026-09-04T10:37:32.958967+00:00",
+  "generated_at": "2026-09-05T09:58:23.126417+00:00",
   "owner": "akeshi02",
   "books": [
+    {
+      "repo": "site-library",
+      "description": "",
+      "url": "https://akeshi02.github.io/site-library/",
+      "language": "HTML",
+      "topics": [],
+      "stars": 0,
+      "updated_at": "2026-09-04T10:37:34Z"
+    },
     {
       "repo": "comic-reader",
       "description": "",
@@ -10,15 +19,6 @@
       "topics": [],
       "stars": 0,
       "updated_at": "2026-09-04T03:10:15Z"
-    },
-    {
-      "repo": "site-library",
-      "description": "",
-      "url": "https://akeshi02.github.io/site-library/",
-      "language": "HTML",
-      "topics": [],
-      "stars": 0,
-      "updated_at": "2026-09-03T10:41:45Z"
     },
     {
       "repo": "folio-ebook-reader",
