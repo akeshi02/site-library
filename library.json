@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T13:27:15.776106+00:00",
+  "generated_at": "2026-11-16T14:50:16.679451+00:00",
   "owner": "akeshi02",
   "books": [
     {
@@ -9,7 +9,7 @@
       "language": "HTML",
       "topics": [],
       "stars": 0,
-      "updated_at": "2026-11-14T12:58:54Z"
+      "updated_at": "2026-11-15T13:27:16Z"
     },
     {
       "repo": "comic-reader",
